@@ -1,0 +1,104 @@
+/* HOROLOGUE — shared responsive layer (loaded last on every page).
+   Only layout/size overrides for small screens and touch devices; no animation is changed. */
+
+/* Pinned stages use the stable small-viewport height on phones, so the browser toolbar never hides their bottom edge */
+@supports (height: 100svh){
+  #hg-col .hg-hs-stage,#hg-gal .hg-gz-stage{height:100svh}
+}
+
+/* ---------- Primary nav: logo + bag on one row, links on a second full-width row ---------- */
+@media (max-width: 760px){
+  header nav[aria-label="Primary"]{display:grid !important;grid-template-columns:minmax(0,1fr) auto;align-items:center;row-gap:2px !important;column-gap:12px !important;padding-top:8px !important;padding-bottom:6px !important}
+  header nav[aria-label="Primary"] > a:first-child{grid-column:1;grid-row:1;font-size:18px !important;letter-spacing:0.26em !important;white-space:nowrap}
+  header nav[aria-label="Primary"] > .hg-bag{grid-column:2;grid-row:1}
+  header nav[aria-label="Primary"] > div{grid-column:1 / -1;grid-row:2;flex-wrap:nowrap !important;justify-content:space-between;gap:0 16px !important;overflow-x:auto;scrollbar-width:none;font-size:12.5px !important;border-top:1px solid rgba(201,162,92,0.14)}
+  header nav[aria-label="Primary"] > div::-webkit-scrollbar{display:none}
+  header nav[aria-label="Primary"] > div .hg-nl{white-space:nowrap;padding:12px 0 10px}
+  section[id]{scroll-margin-top:104px}
+}
+
+/* ---------- Footers: the newsletter column stacks cleanly once it wraps ---------- */
+@media (max-width: 879px){
+  footer form{padding-left:0 !important;border-left:none !important;padding-top:26px !important;border-top:1px solid rgba(201,162,92,0.25)}
+}
+
+/* ---------- Touch screens: reveal what desktop shows on hover ---------- */
+@media (hover: none){
+  .hg-card .hg-card-tag{opacity:1 !important;transform:none !important}
+  .hg-bt .hg-bt-cap{opacity:1 !important;transform:none !important}
+}
+
+/* ---------- Phones: calmer vertical rhythm ---------- */
+@media (max-width: 640px){
+  #hg-home #journal > div,
+  #hg-col #dials > div, #hg-col #anatomy > div, #hg-col #pieces > div:not(.hg-orbs), #hg-col #bespoke > div,
+  #hg-story #chapter > div, #hg-story #hg-tl > div, #hg-story #atelier > div, #hg-story #words > div, #hg-story #values > div:not(.hg-orbs), #hg-story #next > div:last-child,
+  #hg-gal #light > div, #hg-gal #moments > div, #hg-gal #closer > div,
+  #hg-contact #top > div:not(.hg-ring), #hg-contact #write > div{padding-top:80px !important;padding-bottom:84px !important}
+  #hg-gal #details{padding-top:80px !important;padding-bottom:84px !important}
+}
+
+/* ---------- Home ---------- */
+@media (max-width: 760px){
+  #hg-home .hg-vid-journal{width:100%;opacity:0.6}
+  #hg-home #story p[style*="nowrap"]{letter-spacing:0.18em !important;font-size:14px !important}
+}
+@media (max-width: 380px){
+  #hg-home #top h1{font-size:44px !important}
+}
+
+/* ---------- Collections: the sideways gallery fits a phone screen ---------- */
+@media (max-width: 640px){
+  #hg-col .hg-hs-stage{box-sizing:border-box;padding-top:118px;padding-bottom:40px}
+  #hg-col .hg-hs-head{top:112px}
+  #hg-col .hg-hs-intro{width:82vw}
+  #hg-col .hg-hs-panel{width:84vw;gap:12px 24px}
+  #hg-col .hg-hs-imgwrap{flex:0 0 auto;width:min(66vw, 34svh);margin:0 auto}
+  #hg-col .hg-hs-copy{flex-basis:100%;gap:10px}
+  #hg-col .hg-hs-copy h3{font-size:34px !important}
+  #hg-col .hg-hs-copy > p:nth-of-type(2){font-size:18px !important}
+  #hg-col .hg-hs-num{font-size:110px;top:-6%}
+  #hg-col .hg-hs-prog{bottom:28px}
+  #hg-col .hg-dial-opt{grid-template-columns:auto minmax(0,1fr) auto;gap:12px;padding:12px 12px}
+  #hg-col .hg-dial-name{font-size:20px}
+  #hg-col .hg-dial-opt.is-on{padding-left:18px}
+  #hg-col .hg-chip{font-size:10px;padding:8px 12px}
+}
+
+/* ---------- Our Story: on phones the journey dial becomes a compact sticky badge beside the timeline ---------- */
+@media (max-width: 899px){
+  #hg-story #hg-tl > div{gap:18px 0 !important}
+  #hg-story #hg-tl > div > div:first-child{display:contents !important}
+  #hg-story #hg-tl > div > div:first-child > *{flex:1 1 100%}
+  #hg-story #hg-tl .hg-tl-dial{position:sticky;top:112px;z-index:4;flex:0 0 auto !important;width:132px;max-width:132px;margin:0 0 0 auto;align-self:flex-start;border-radius:50%;background:radial-gradient(closest-side, #12100D 0%, #0A0908 84%, rgba(10,9,8,0) 100%);box-shadow:0 14px 34px -12px #000}
+  #hg-story #hg-tl .hg-tl-titles{display:none}
+  #hg-story #hg-tl .hg-odo{font-size:30px}
+  #hg-story #hg-tl-list{flex:1 1 100% !important}
+}
+@media (max-width: 640px){
+  #hg-story .hg-ms{padding-left:58px;padding-bottom:10vh}
+  #hg-story .hg-ms-node{left:6px}
+  #hg-story .hg-tl-rail{left:17px}
+  #hg-story .hg-ms-card{padding:18px;gap:16px}
+  #hg-story .hg-ms-img{max-width:none;flex-basis:100%}
+  #hg-story .hg-ms-year{font-size:72px}
+  #hg-story .hg-sstat{padding:20px 16px}
+  #hg-story .hg-card-in{padding:28px 22px 26px}
+}
+
+/* ---------- Gallery ---------- */
+@media (max-width: 640px){
+  #hg-gal .hg-bento{grid-auto-rows:160px;gap:12px}
+  #hg-gal .hg-bt-pad{padding:18px}
+  #hg-gal .hg-big{font-size:46px}
+  #hg-gal .hg-wall{min-height:720px;height:120vh}
+  #hg-gal .hg-wall-plate{padding:32px 22px}
+  #hg-gal .hg-lb-btn{width:46px;height:46px}
+}
+
+/* ---------- Contact ---------- */
+@media (max-width: 640px){
+  #hg-contact .hg-info span{font-size:19px;overflow-wrap:anywhere}
+  #hg-contact .hg-form{padding:22px}
+  #hg-contact .hg-pill span{padding:0 14px}
+}
